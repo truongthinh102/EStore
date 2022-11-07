@@ -1,0 +1,104 @@
+{% extends 'store/_Master.html' %}
+{% load static %}
+
+{% block title_page %}EStore | User{% endblock %}
+{% block main_content %}
+        
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'store:index' %}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">User</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Login Start -->
+        <div class="login">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">    
+                        <div class="register-form">
+                            <form method="post">
+                                {% csrf_token %}
+                                <h2>Đăng ký User</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ chuoi_kq_dang_ky|safe }}
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>{{ frm_user.username.label }}</label>
+                                        {{ frm_user.username }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ frm_user.email.label }}</label>
+                                        {{ frm_user.email }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ frm_user.password.label }}</label>
+                                        {{ frm_user.password }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ frm_user.confirm_password.label }}</label>
+                                        {{ frm_user.confirm_password }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ frm_profile.portfolio.label }}</label>
+                                        {{ frm_profile.portfolio }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ frm_profile.image.label }}</label>
+                                        {{ frm_profile.image }}
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <button class="btn" type="submit" name="btnDangKy" value="Đăng ký">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="login-form">
+                            <form method="post">
+                                {% csrf_token %}
+                                <h2>Đăng nhập User</h2>
+                                <div class="row">
+                                    {% if request.user.is_authenticated %}
+                                        <div class="col-md-6">
+                                            <label>Xin chào bạn {{ request.user.username }}</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <a class="btn" href="{% url 'store:logout-user' %}">Sign Out</a>
+                                        </div>
+                                    {% else %}
+                                    <div class="col-md-6">
+                                        <label>Username</label>
+                                        <input class="form-control" type="text" placeholder="Username" name="username">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Password</label>
+                                        <input class="form-control" type="password" placeholder="password" name="password">
+                                    </div>
+                                    <!-- <div class="col-md-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="newaccount">
+                                            <label class="custom-control-label" for="newaccount">Keep me signed in</label>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-12">
+                                        <button class="btn" type="submit" name="btnDangNhap" value="Đăng nhập">Sign In</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login End -->
+{% endblock %}

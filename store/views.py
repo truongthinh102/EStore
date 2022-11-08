@@ -140,7 +140,6 @@ def product(request, pk):
     for i in list_rules:
         list_asc_products.append(Product.objects.get(pk=int(i)))
 
-    
 
     return render(request, 'store/product-detail.html', {
         'list_subcategory': list_subcategory,

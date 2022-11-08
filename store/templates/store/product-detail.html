@@ -157,10 +157,14 @@
                                             <img src="{{ products.image.url }}" alt="{{ products.name }}">
                                         </a>
                                     </div>
-                                    <div class="product-price">
-                                        <h3 style="font-size: 20px;">{{ product.price|floatformat:0|intcomma }}<span>đ</span></h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
+                                    <form method="post" action="{% url 'cart:buy_now' products.pk %}">
+                                        {% csrf_token %}
+                                        <div class="product-price">
+                                            <h3 style="font-size: 20px;">{{ products.price|floatformat:0|intcomma }}<span>đ</span></h3>
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button class="btn" type="submit" ><i class="fa fa-shopping-cart"></i>Mua ngay</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         {% endfor %}
@@ -183,10 +187,14 @@
                                         <img src="{{ products.image.url }}" alt="{{ products.name }}">
                                     </a>
                                 </div>
-                                <div class="product-price">
-                                    <h3 style="font-size: 20px;">{{ products.price|floatformat:0|intcomma }}<span>đ</span></h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
+                                <form method="post" action="{% url 'cart:buy_now' products.pk %}">
+                                    {% csrf_token %}
+                                    <div class="product-price">
+                                        <h3 style="font-size: 20px;">{{ products.price|floatformat:0|intcomma }}<span>đ</span></h3>
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button class="btn" type="submit" ><i class="fa fa-shopping-cart"></i>Mua ngay</button>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
                     </div>
@@ -223,10 +231,14 @@
                                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
                                     </a>
                                 </div>
-                                <div class="product-price">
-                                    <h3 style="font-size: 20px;">{{ product.price|floatformat:0|intcomma }}<span>đ</span></h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
+                                <form method="post" action="{% url 'cart:buy_now' product.pk %}">
+                                    {% csrf_token %}
+                                    <div class="product-price">
+                                        <h3 style="font-size: 20px;">{{ product.price|floatformat:0|intcomma }}<span>đ</span></h3>
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button class="btn" type="submit" ><i class="fa fa-shopping-cart"></i>Mua ngay</button>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
                     </div>

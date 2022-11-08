@@ -20,6 +20,7 @@
     <div class="checkout cart-page" style="padding-top: 0;">
         <div class="container-fluid">
             <form method="post">
+                {% csrf_token %}
                 <div class="row">
                     <div class="col-md-8" style="padding: 0">
                         <div class="col-lg-12">

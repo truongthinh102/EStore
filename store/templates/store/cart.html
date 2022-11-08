@@ -113,7 +113,6 @@
                                         <h2>Tổng thành tiền<span>{{ cart.get_final_total_price|floatformat:0|intcomma }}</span></h2>
                                     </div>
                                     <div class="cart-btn">
-
                                             <button type="submit" name="btnUpdateCart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
                                             <button type="button" onclick="window.location.href='{% url 'cart:checkout' %}'">Mua hàng</button>
                                     </div>

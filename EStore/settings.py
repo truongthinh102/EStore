@@ -59,6 +59,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://estore-thodin.herokuapp.com'
+]
+
 ROOT_URLCONF = 'EStore.urls'
 
 TEMPLATES = [

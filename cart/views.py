@@ -75,10 +75,13 @@ def remove_cart(request, product_id):
 
     return redirect('cart:cart_detail')
 
-@require_POST
+
 def checkout(request):
     cart = Cart(request)
 
+
+    if 's_khach_hang' not in request.session:
+        return redirect('store:index')
     # Đặt hàng
     if request.POST.get('btnDatHang'):
         khach_hang = request.session.get('s_khach_hang')
